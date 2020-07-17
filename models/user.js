@@ -1,11 +1,33 @@
+var bcrypt = require("bcryptjs");
+
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
-        firstName: DataTypes.STRING,
-        lastName: DataTypes.STRING,
-        email: DataTypes.STRING,
-        password: DataTypes.STRING,
-        profession_id : DataTypes.INTEGER
+    firstName: {
+            type: DataTypes.STRING,
+            allowNull: false}
+            ,
+    lastName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true, 
+            validate: {
+                isEmail: true},
+                password: {
+                    type: DataTypes.STRING,
+                    allowNull: false
+        },
+    },
+
+    profession_id : {
+        type: DataTypes.INTEGER,
+    allowNull: false},
+
     })
+
     User.belongsToMany(Game, {
         through: 'users_games'
       });
@@ -21,7 +43,15 @@ module.exports = function(sequelize, DataTypes) {
         through: "user_friends"
     })
 
-    User.hasOne(Profession,{as: "profession_id"} )
-    return User;
+  User.hasOne(Profession,{as: "profession_id"} )
 
+  User.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+  // Hooks are automatic methods that run during various phases of the User 
+  User.addHook("beforeCreate", function(user) {
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  });
+  return User;
 };
+
