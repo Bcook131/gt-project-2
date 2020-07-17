@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
         through: 'users_games'
       });
 
-    Game.hasMany(user,
+    Game.hasMany(User,
         {through: "users_games"
     })
     return User;
