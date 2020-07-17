@@ -10,7 +10,7 @@ $(document).ready(function() {
     let firstNameInput = $("#firstName");
     let lastNameInput= $("#lastName");
     let emailInput = $("#email");
-    let password = $("paswword");
+    let password = $("password");
     let rePassword = $("re-enterPassword")
     let occupationSelection= $("#occupation");
     let gameOne = $("gameOne");
@@ -21,7 +21,7 @@ $(document).ready(function() {
     $(signUp).on("submit", function handleFormSubmit(event) {
       event.preventDefault();
       // Wont submit the post if we are missing a body or a title
-      if (!firstNameInput.val().trim() || !lastNameInput.val().trim() || !emailInput.val().trim() || !occupationSelection.val().trim() || !password.val().trim() || !rePassword.val().trim()|| | !gameOne.val() || !gameTwo.val() || !gameThree.val()) {
+      if (!firstNameInput.val().trim() || !lastNameInput.val().trim() || !emailInput.val().trim() || !occupationSelection.val().trim() || !password.val().trim() || !rePassword.val().trim() || !gameOne.val() || !gameTwo.val() || !gameThree.val()) {
           message: "All fields must be completed"
         return message;
       } else if (password !=rePassword){
