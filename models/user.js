@@ -9,5 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     User.belongsToMany(Game, {
         through: 'users_games'
       });
+
+      User.hasOne(Profession,{as: "profession_id"} )
     return User;
 };
