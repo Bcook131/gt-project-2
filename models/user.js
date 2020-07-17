@@ -13,6 +13,15 @@ module.exports = function(sequelize, DataTypes) {
         through: 'user_games'
     });
 
-      User.hasOne(Profession,{as: "profession_id"} )
+    User.hasMany (User, {
+        through : "user_friends"
+    })
+
+    User.belongsToMany(User, {
+        through: "user_friends"
+    })
+
+    User.hasOne(Profession,{as: "profession_id"} )
     return User;
+
 };
