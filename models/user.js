@@ -47,7 +47,7 @@ module.exports = function(sequelize, DataTypes) {
         through: "user_friends"
     })
 
-  User.hasOne(Profession,{as: "profession_id"} )
+  User.hasOne(Profession,{as: "occupation_id"} )
 
   User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
