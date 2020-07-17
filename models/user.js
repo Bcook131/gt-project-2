@@ -21,6 +21,10 @@ module.exports = function(sequelize, DataTypes) {
                     allowNull: false
         },
     },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
 
     profession_id : {
         type: DataTypes.INTEGER,
