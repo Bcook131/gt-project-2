@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       },
 
-    profession_id : {
+    occupation_id : {
         type: DataTypes.INTEGER,
     allowNull: false},
 
