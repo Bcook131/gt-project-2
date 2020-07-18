@@ -1,60 +1,60 @@
-$(document).ready(function() {
-    // Gets an optional query string from our url (i.e. ?post_id=23)
-    var url = window.location.search;
+// $(document).ready(function() {
+//     // Gets an optional query string from our url (i.e. ?post_id=23)
+//     var url = window.location.search;
   
-    // Getting jQuery references to the post body, title, form, and category select
-    let signUp= $("#signUp-form")
-    let firstNameInput = $("#firstName");
-    let lastNameInput= $("#lastName");
-    let emailInput = $("#email");
-    let password = $("password");
-    let rePassword = $("re-enterPassword")
-    let occupationSelection= $("#occupation");
-    let gameOne = $("gameOne");
-    let gameTwo = $("gameTwo");
-    let gameThree = $("gameThree");
+//     // Getting jQuery references to the post body, title, form, and category select
+//     let signUp= $("#signUp-form")
+//     let firstNameInput = $("#firstName");
+//     let lastNameInput= $("#lastName");
+//     let emailInput = $("#email");
+//     let password = $("password");
+//     let rePassword = $("re-enterPassword")
+//     let occupationSelection= $("#occupation");
+//     let gameOne = $("gameOne");
+//     let gameTwo = $("gameTwo");
+//     let gameThree = $("gameThree");
    
-    // Adding an event listener for when the form is submitted
-    $(signUp).on("submit", function handleFormSubmit(event) {
-      event.preventDefault();
-      // Wont submit the user if we are missing a body or a title
+//     // Adding an event listener for when the form is submitted
+//     $(signUp).on("submit", function handleFormSubmit(event) {
+//       event.preventDefault();
+//       // Wont submit the user if we are missing a body or a title
       
-      if (!firstNameInput.val().trim() || !lastNameInput.val().trim() || !emailInput.val().trim() || !occupationSelection.val().trim() || !password.val().trim() || !rePassword.val().trim() || !gameOne.val() || !gameTwo.val() || !gameThree.val()) {
-          message: "All fields must be completed"
-        return message;
-      } else if (password !=rePassword){
-          //both passwords must match
-          return 
-      }
+//       if (!firstNameInput.val().trim() || !lastNameInput.val().trim() || !emailInput.val().trim() || !occupationSelection.val().trim() || !password.val().trim() || !rePassword.val().trim() || !gameOne.val() || !gameTwo.val() || !gameThree.val()) {
+//           message: "All fields must be completed"
+//         return message;
+//       } else if (password !=rePassword){
+//           //both passwords must match
+//           return 
+//       }
 
-      // Constructing a newPost object to hand to the database
-      let newUser = {
-        firstName: firstNameInput,
-        lastName: lastNameInput,
-        email: emailInput,
-        password: password,
-        occupation_id : occupationSelection,
-      };
+//       // Constructing a newPost object to hand to the database
+//       let newUser = {
+//         firstName: firstNameInput,
+//         lastName: lastNameInput,
+//         email: emailInput,
+//         password: password,
+//         occupation_id : occupationSelection,
+//       };
   
-      console.log(newUser);
-      signUpUser(newUser.firstName, newUser.lastName, newUser.email, newUser.occupation)
+//       console.log(newUser);
+//       signUpUser(newUser.firstName, newUser.lastName, newUser.email, newUser.occupation)
 
-    })
+//     })
     
-    function signUpUser(firstName, lastName, email, password, occupation) {
-        $.post("/api/signup", {
-            firstName: firstName,
-            lastNAme: lastName,
-            email: email,
-            password: password,
-            occupation: occupation
-        })
-          .then(function(data) {
-            window.location.replace("/members");
-            // If there's an error, handle it by throwing up a bootstrap alert
-          })
-          .catch(handleLoginErr);
-      })
-    })  
+//     function signUpUser(firstName, lastName, email, password, occupation) {
+//         $.post("/api/signup", {
+//             firstName: firstName,
+//             lastNAme: lastName,
+//             email: email,
+//             password: password,
+//             occupation: occupation
+//         })
+//           .then(function(data) {
+//             window.location.replace("/members");
+//             // If there's an error, handle it by throwing up a bootstrap alert
+//           })
+//           .catch(handleLoginErr);
+//       })
+//     })  
 
     
