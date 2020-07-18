@@ -1,22 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
     let Game = sequelize.define("Game", {
-        name: DataTypes.STRING,
+      game_id: {
+        type: DataTypes.INTEGER(11),
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+      },
+      name: {
+        type: DataTypes.STRING(60),
+        allowNull: false,
+        unique: true
+      }
     })
-    Game.associate = function(models){
-        Game.belongsToMany(models.User,
-          {foreignKey: {
-          allowNull: false
-       }},
-       {through: "users_games"}
-       );
-    
-        Game.hasMany(models.User, 
-          {foreignKey: {
-                     allowNull: false
-                  }},
-          {through: "users_games"}
-
-                  )}
+    Game.associate = (models) => {
+      Game.belongsToMany(models.User, { as: 'UserGames', through: models.User_games, foreignKey: 'game_id'});
+    }
 
     return Game;
 };

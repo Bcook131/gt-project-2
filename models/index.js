@@ -30,11 +30,11 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
-db.game = require('../models/games.js')(sequelize, Sequelize);
-db.user = require('../models/user.js')(sequelize, Sequelize);
+// db.game = require('../models/games.js')(sequelize, Sequelize);
+// db.user = require('../models/user.js')(sequelize, Sequelize);
 
-db.game.belongsToMany(db.user, { as: 'Users', through: 'users_games', foreignKey: 'gameId', otherKey: 'userId'});
-db.user.belongsToMany(db.game, { as: 'Games', through: 'users_games', foreignKey: 'userId', otherKey: 'gameId'});
+// db.game.belongsToMany(db.user, { as: 'Users', through: 'users_games', foreignKey: 'gameId', otherKey: 'userId'});
+// db.user.belongsToMany(db.game, { as: 'Games', through: 'users_games', foreignKey: 'userId', otherKey: 'gameId'});
  
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
