@@ -10,6 +10,14 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true
     },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -28,6 +36,7 @@ module.exports = function(sequelize, DataTypes) {
     User.belongsToMany(models.Game, { as: 'UserGames', through: models.User_games, foreignKey: 'user_id'});
 
     User.hasOne(models.Occupation, {foreignKey: 'user_id'})
+    
     User.belongsToMany(User, { as: "Friend", through: 'User_Friends' });
   }
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database

@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     })
     Occupation.associate = (models) => {
-      Occupation.belongsTo(models.User, {foreignKey: 'Occupation_id'});
+      Occupation.belongsTo(models.User, {foreignKey: 'user_id'});
     }
 
     return Occupation;
