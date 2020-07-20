@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     let Occupation = sequelize.define("Occupation", {
-      Occupation_id: {
+      id: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         autoIncrement: true,
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     })
     Occupation.associate = (models) => {
-      Occupation.belongsTo(models.User, {foreignKey: 'user_id'});
+      Occupation.hasOne(models.User);
     }
 
     return Occupation;

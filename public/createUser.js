@@ -55,4 +55,12 @@ function signUpUser(firstName, lastName, email, password, occupation) {
       .catch(handleLoginErr);
   }
 })
-    
+
+// script for the sign up form
+var modal = document.getElementById('id01');
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
