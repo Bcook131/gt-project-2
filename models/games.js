@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(60),
         allowNull: false,
         unique: true
+      },
+      image: {
+        type: DataTypes.BLOB('long')
       }
     })
     Game.associate = (models) => {
