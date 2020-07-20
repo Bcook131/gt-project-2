@@ -20,14 +20,13 @@ $(signUp).on("submit", function handleFormSubmit(event) {
   // Wont submit the user if we are missing a body or a title
   
   if (!firstNameInput.val().trim() || !lastNameInput.val().trim() || !emailInput.val().trim() || !occupationSelection.val().trim() || !password.val().trim() || !rePassword.val().trim() || !gameOne.val() || !gameTwo.val() || !gameThree.val()) {
-      message: "All fields must be completed"
-    return message;
+    return done({message: "All fields must be completed"});
   } else if (password !=rePassword){
-      //both passwords must match
-      return 
+      
+      return done({message: "Passwords must match"})
   }
 
-  // Constructing a newPost object to hand to the database
+  // Constructing a newUser object to hand to the database
   let newUser = {
     firstName: firstNameInput,
     lastName: lastNameInput,
@@ -51,7 +50,7 @@ function signUpUser(firstName, lastName, email, password, occupation) {
     })
       .then(function(data) {
         window.location.replace("/members");
-        // If there's an error, handle it by throwing up a bootstrap alert
+
       })
       .catch(handleLoginErr);
   }
