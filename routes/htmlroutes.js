@@ -2,6 +2,10 @@ const db = require("../models");
 module.exports = function(app){
     //load index page
     app.get("/", function(req, res){
-        res.render("index");
+        db.Game.findAll().then(games => {
+            console.log(games)
+            res.render("index", {games:games});
+        })
+        
     })
 }
