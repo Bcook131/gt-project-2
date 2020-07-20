@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = (models) => {
     User.belongsToMany(models.Game, { as: 'UserGames', through: models.User_games, foreignKey: 'user_id'});
 
-    User.hasOne(models.Occupation, {foreignKey: 'user_id'})
+    User.belongsTo(models.Occupation)
     
     User.belongsToMany(User, { as: "Friend", through: 'User_Friends' });
   }
