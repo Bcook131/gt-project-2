@@ -17,7 +17,7 @@ app.use(passport.session());
 
 app.use(express.static("public"));
 const exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main", allowProtoPropertiesByDefault:true }));
 app.set("view engine", "handlebars");
 
 
