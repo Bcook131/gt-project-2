@@ -1,28 +1,25 @@
 {
-  "name": "gt-project-2",
+  "name": "post-author-joins",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "express": "^4.17.1",
-    "mysql2": "^2.1.0",
-    "nodemon": "^2.0.4",
-    "sequelize": "^6.3.3"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
+    
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Bcook131/gt-project-2.git"
-  },
-  "author": "Jimmy, Andrew, Brian, Diego",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Bcook131/gt-project-2/issues"
-  },
-  "homepage": "https://github.com/Bcook131/gt-project-2#readme"
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "mysql2": "^1.7.0",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.44.4"
+  }
 }
