@@ -38,7 +38,7 @@
         </div>
     </nav>
 		{{{ body }}}
-        <div id="id01" class="modal fixed w-2/3 mt-8 bg-white mx-auto" style="display: none;">
+        <div id="id01" class="modal absolute w-2/3 mt-8 bg-white mx-auto" style="display: none;">
                 <span onclick="toggleModal()" class="close"
                     title="Close Modal">&times;</span>
                 <form class="modal-content" onsubmit="register">
@@ -75,6 +75,10 @@
                             <div>
                                 <label for="job"><b>Occupation</b></label>
                                 <select id="occupation" placeholder="Enter Occupation" name="work" required>
+                                    {{#each occupations}}
+                                    <option value="{{id}}">{{occupation}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
 
 
