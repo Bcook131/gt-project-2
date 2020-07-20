@@ -32,12 +32,12 @@ $(signUp).on("submit", function handleFormSubmit(event) {
     lastName: lastNameInput,
     email: emailInput,
     password: password,
-    occupation_id : occupationSelection,
+    Occupationid : occupationSelection,
   };
 
-  console.log(newUser);
+ 
   signUpUser(newUser.firstName, newUser.lastName, newUser.email, newUser.occupation)
-
+  
 })
 
 function signUpUser(firstName, lastName, email, password, occupation) {
@@ -49,12 +49,16 @@ function signUpUser(firstName, lastName, email, password, occupation) {
         occupation: occupation
     })
       .then(function(data) {
+
+
         window.location.replace("/members");
 
       })
       .catch(handleLoginErr);
   }
 })
+
+gameSelection()
 
 // script for the sign up form
 var modal = document.getElementById('id01');
