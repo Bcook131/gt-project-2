@@ -11,9 +11,9 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         unique: true
       },
-      image: {
-        type: DataTypes.BLOB('long')
-      }
+      // image: {
+      //   type: DataTypes.BLOB('long')
+      // }
     })
     Game.associate = (models) => {
       Game.belongsToMany(models.User, { as: 'UserGames', through: models.User_games, foreignKey: 'game_id'});
