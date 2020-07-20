@@ -10,6 +10,16 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(60),
         allowNull: false,
         unique: true
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        field: 'created_at',
+        allowNull: true
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        field: 'updated_at',
+        allowNull: true
       }
     })
     Occupation.associate = (models) => {
