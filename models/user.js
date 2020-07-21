@@ -30,8 +30,9 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    }
-  });
+    },
+    
+  }, {timestamps: false});
   User.associate = (models) => {
     User.belongsToMany(models.Game, { as: 'UserGames', through: models.User_games, foreignKey: 'user_id'});
 
