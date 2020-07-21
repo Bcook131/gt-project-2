@@ -10,9 +10,9 @@ let emailInput = $("#email");
 let password = $("password");
 let rePassword = $("re-enterPassword")
 let occupationSelection= $("#occupation");
-let gameOne = $("gameOne");
-let gameTwo = $("gameTwo");
-let gameThree = $("gameThree");
+// let gameOne = $("gameOne");
+// let gameTwo = $("gameTwo");
+// let gameThree = $("gameThree");
 
 // Adding an event listener for when the form is submitted
 $(signUp).on("submit", function handleFormSubmit(event) {
@@ -58,7 +58,6 @@ function signUpUser(firstName, lastName, email, password, occupation) {
   }
 })
 
-gameSelection()
 
 // script for the sign up form
 var modal = document.getElementById('id01');

@@ -43,7 +43,7 @@ module.exports = function(app) {
       )
     );
     
-    res.json(req.user);
+   res.json(req.user);
   });
 
   app.post("/api/signup", function(req, res) { 
@@ -56,11 +56,6 @@ module.exports = function(app) {
       password: info.password,
       OccupationId: info.OccupationId,
     }).then(function(request, response) {
-      
-      db.User_games.create({
-      user_id: request.user_id,
-      game_id: info.gameOne,
-    })
 
         res.redirect(307, "/api/login");
       })

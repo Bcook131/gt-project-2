@@ -1,8 +1,8 @@
 $(document).ready(function() {
     // Getting references for login and password
     var loginForm = $("login-form");
-    var emailInput = $("input#email-input");
-    var passwordInput = $("input#password-input");  
+    var emailInput = $("#email-input");
+    var passwordInput = $("#password-input");  
     // When the form is submitted, we validate there's an email and password entered
     loginForm.on("submit", function(event) {
       event.preventDefault();
