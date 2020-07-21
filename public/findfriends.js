@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  //add paramater that takes in user id below. 
 function findFriends() {
   let userid;
   let occupationid = $("#occupationid");

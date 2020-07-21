@@ -37,7 +37,7 @@
             
         </form>
         <p class="text-center text-gray-500 text-xs">
-            &copy;2020 Jimmy Diego Bian Andrew Corp. All rights reserved.
+            &copy;2020 Jimmy Diego Brian Andrew Corp. All rights reserved.
         </p>
     </div>
     <script>
@@ -47,7 +47,8 @@
                 email: document.getElementById('username').value,
                 password: document.getElementById('password').value,
             }).then(res => {
-                console.log(res.data)
+                //this then statement in main kind of res to get response and that to use the id
+                console.log("res.data",res.data.user_id)
                 if(res.data.user_id){
                     window.location.href = '/find';
                 }
