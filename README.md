@@ -15,6 +15,8 @@ Clone the repo and run node server.js. Then from there you will sign in or regis
 ## Usage
 This app is used for finding people that have similar occupations and video game interists so that you can find someone to play video games with and to work together whenever you want and to also find random people.
 
+[github repo](https://github.com/Bcook131/gt-project-2)
+
 ## MIT License
 
 Copyright (c) [2020] [Brian, Diego, Andrew, Jimmy]
