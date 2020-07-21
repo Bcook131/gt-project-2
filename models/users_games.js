@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         unique: 'unique-game-per-user'
       },
     }, {
-      timestamps: true,
+      timestamps: false,
       underscored: true,
       tableName: 'users_games'
     });

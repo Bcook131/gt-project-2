@@ -10,18 +10,8 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(60),
         allowNull: false,
         unique: true
-      },
-    createdAt: {
-      type: DataTypes.DATE,
-      field: 'created_at',
-      allowNull: true
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      field: 'updated_at',
-      allowNull: true
-    }
-    })
+      }
+    }, {timestamps: false})
     Game.associate = (models) => {
       Game.belongsToMany(models.User, { as: 'UserGames', through: models.User_games, foreignKey: 'game_id'});
     }
