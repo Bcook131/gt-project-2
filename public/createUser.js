@@ -15,7 +15,7 @@ let occupationSelection= $("#occupation");
 // let gameThree = $("gameThree");
 
 // Adding an event listener for when the form is submitted
-$(signUp).on("submit", function handleFormSubmit(event) {
+signUp.on("submit", function handleFormSubmit(event) {
   event.preventDefault();
   // Wont submit the user if we are missing a body or a title
   
@@ -32,9 +32,9 @@ $(signUp).on("submit", function handleFormSubmit(event) {
     lastName: lastNameInput,
     email: emailInput,
     password: password,
-    Occupationid : occupationSelection,
+    occupation : occupationSelection,
   };
-
+console.log("This is the new User!" , newUser);
  
   signUpUser(newUser.firstName, newUser.lastName, newUser.email, newUser.occupation)
   
@@ -50,7 +50,7 @@ function signUpUser(firstName, lastName, email, password, occupation) {
     })
       .then(function(data) {
 
-
+        console.log(data);
         window.location.replace("/members");
 
       })
