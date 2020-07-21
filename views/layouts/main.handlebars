@@ -136,8 +136,11 @@
                 email:form.elements['email'].value,
                 password: form.elements['password'].value,
                 occupation: form.elements['occupation'].value
-            }).then() => {
-                window.location.href = '/find'
+            }).then(res => {
+                //this then statement kind of in main using res to get response and that to use the id
+                
+                    window.location.href = '/find';
+                
             })
             
             
