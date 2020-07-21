@@ -1,6 +1,7 @@
 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h1 class="text-xxl">Welcome, {{user.firstName}} {{user.lastName}}</h1>
         <h2>Find your partner</h2>
-        <p>{{user.id}}</p>
+        
         <div class="mb-4">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                 Field of study
@@ -65,3 +66,4 @@
         </tr>
     </tbody>
 </table>
+<div id="user-data"></div>

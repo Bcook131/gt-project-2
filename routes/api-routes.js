@@ -17,6 +17,7 @@ module.exports = function(app) {
     });
     
   })})
+  
 //build more routes to get data in order to pass into the front end
 //get all data into array in order to be used for dropdowns on the frontend
 app.get("/api/occupations", function(req,res){
@@ -52,6 +53,7 @@ app.get("/api/occupations", function(req,res){
                 
                 email: email,
               },
+              include:['games','occuppations']
             });
             if (!user) {
               
@@ -77,7 +79,8 @@ app.get("/api/occupations", function(req,res){
 
   app.post("/api/signup", function(req, res) { 
     let info = req.body;
-    console.log(info);
+    console.log(info, 'here');
+
     db.User.create({
       firstName: info.firstName,
       lastName: info.lastName,
