@@ -12,6 +12,8 @@ module.exports = function(app){
         var games = await db.Game.findAll({raw:true});
         res.render('find', {user: req.user, occupations, games})
     })
+    
+    
     app.get('/signup', async function(req, res){
         var occupations = await db.Occupation.findAll({raw:true});
         var games = await db.Game.findAll({raw:true});
