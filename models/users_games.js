@@ -1,7 +1,7 @@
 // tagUserGame.js
 module.exports = function(sequelize, DataTypes) {
     const User_games = sequelize.define('User_games', {
-      tag_post_genre_id: {
+      game_user_id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.INTEGER,
         primaryKey: true
