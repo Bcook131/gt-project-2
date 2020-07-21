@@ -138,4 +138,69 @@ app.get("/api/occupations", function(req,res){
       });
     }
   });
+  app.get("/api/findfriends", function(req,res){
+    let userid;
+      let occupationid = $("#occupationid");
+      let gameid = $("#gameid");
+        db.findAll({
+          attributes: {
+            include: [
+              [
+                sequelize.literal(`(
+                          SELECT u.firstName, u.lastName, o.occupation, g.name 
+                          FROM users_games ug
+                          join users u
+                          on ug.user_id = u.user_id
+                          join games g
+                          on g.game_id = ug.game_id
+                          join occupations o
+                          on u.occupationid = o.id
+                          where u.user_id not in(select user_id from users where u.user_id = ${userid})
+                          and occupationid = ${occupationid}
+                          and ug.game_id = ${gameid} ;
+                      )`),
+              ],
+            ],
+          },
+        }
+        ).then((friends)=>{
+      const friendsToReturn = friends.map((friend) => {
+        console.log(friends) });
+        res.json({
+          error: false,
+          data: friends,
+    });
+  })})
+  app.delete("/api/removeFriend", function(req,res){
+    let userId = $("#userid") //userlogged in;
+    let friendId=$("#user_id") //person user they click to add
+      db.User_Friends.destroy({
+          attributes: {
+            include: [
+              [
+                sequelize.literal(`(
+                  insert into User_Friends (userUserId, friendUserId) values (${userId}, ${friendId}`),
+              ],
+            ],
+          },
+        }
+        ).then((response)=>{
+      console.log(response)
+  })})
+  app.post("/api/addFriend", function(req,res){
+    let userId = $("#userid") //userlogged in;
+    let friendId=$("#user_id") //person user they click to add
+      db.User_Friends.create({
+          attributes: {
+            include: [
+              [
+                sequelize.literal(`(
+                  insert into User_Friends (userUserId, friendUserId) values (${userId}, ${friendId}`),
+              ],
+            ],
+          },
+        }
+        ).then((response)=>{
+      console.log(response)
+  })})
 };

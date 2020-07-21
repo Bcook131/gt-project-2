@@ -9,7 +9,7 @@
             <div class="relative">
                 <select id="occupation-choice" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     {{#each occupations}}
-                    <option value="{{id}}">{{occupation}}</option>
+                    <option value="{{occupation}}">{{occupation}}</option>
                     {{/each}}
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -24,7 +24,7 @@
             <div class="relative">
                 <select id="game-choice" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     {{#each games}}
-                    <option value="{{id}}">{{name}}</option>
+                    <option value="{{name}}">{{name}}</option>
                     {{/each}}
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -42,7 +42,7 @@
     </form>
    
 <table id="user-data" class="table-auto w-2/3 mx-auto">
-
+ {{!-- here be results --}}
 </table>
 
 <script>
@@ -54,17 +54,21 @@
     
     findForm.addEventListener('submit', ev => {
         ev.preventDefault();
-        resultContainer.innerHTML = '
+        resultContainer.innerHTML = `
         <thead>
         <tr>
             <th class="px-4 py-2">Occupation</th>
             <th class="px-4 py-2">User</th>
-            <th class="px-4 py-2">Has time</th>
+            <th class="px-4 py-2">Game</th>
         </tr>
         </thead>
-        ';
+        `;
         axios.get('/api/find').then(res => {
             res.data.forEach(user => {
+                // for now:
+                user.occupation = occupationChoice.value;
+                user.game = gameChoice.value;
+                
                 resultContainer.innerHTML += template(user)
             })
         })
@@ -72,9 +76,9 @@
 
     const template = data => `
     <tr>
-        <td class="border px-4 py-2">Intro to JavaScript</td>
+        <td class="border px-4 py-2">${data.occupation}</td>
         <td class="border px-4 py-2">${data.firstName} ${data.lastName} (${data.email})</td>
-        <td class="border px-4 py-2">weekend</td>
+        <td class="border px-4 py-2">${data.game}</td>
     </tr>
     
     `;
