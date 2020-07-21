@@ -5,12 +5,33 @@ const LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function(app) {  
   app.get("/api/games", function(req,res){
-    db.findAll();
-    console.log(db.findAll());
-  })
+    db.Game.findAll().then((games)=>{
+      const gamesToReturn = games.map((game) => {
+        return {
+        id: game.game_id,
+        name: game.name,
+      }; });
+        res.json({
+          error: false,
+          data: games,
+    });
+    
+  })})
 //build more routes to get data in order to pass into the front end
 //get all data into array in order to be used for dropdowns on the frontend
-
+app.get("/api/occupations", function(req,res){
+  db.Occupation.findAll().then((occupations)=>{
+    const gamesToReturn = occupations.map((occupation) => {
+      return {
+      id: occupation.id,
+      occupation: occupation.occupation,
+    }; });
+      res.json({
+        error: false,
+        data: occupations,
+  });
+  
+})})
 
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     console.log(req.body)
@@ -79,6 +100,22 @@ module.exports = function(app) {
     req.logout();
     res.redirect("/");
   });
+
+  app.get("/user/:id", function(req, res){
+    const id = req.params.id;
+   db.User.findOne({ where: { user_id: id } }).then((singleUser) => {
+  const userToReturn = {
+    id: singleUser.id,
+    username: singleUser.email,
+  };
+  res.json({
+    error: false,
+    data: userToReturn,
+    message: "User with requested id",
+  });
+})});
+
+
 
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
