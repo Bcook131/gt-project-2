@@ -72,7 +72,7 @@ app.get("/api/occupations", function(req,res){
       )
     );
     
-   res.json(req.user);
+   return res.status(200).json(req.user);
   });
 
   app.post("/api/signup", function(req, res) { 

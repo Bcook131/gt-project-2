@@ -17,7 +17,7 @@ app.use(passport.session());
 
 app.use(express.static("public"));
 const exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main", allowProtoPropertiesByDefault:true }));
 app.set("view engine", "handlebars");
 
 
@@ -30,6 +30,6 @@ require("./routes/htmlroutes.js")(app);
 // =============================================================
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
-    console.log(`http://localhost:${PORT}`);
+    console.log(`App listening (PORT ${PORT}) @ http://localhost:${PORT}`);
   });
 });
