@@ -10,7 +10,8 @@ module.exports = function(app){
     app.get('/find', async function(req, res){
         var occupations = await db.Occupation.findAll({raw:true});
         var games = await db.Game.findAll({raw:true});
-        
+        console.log(req.user)
+
         res.render('find', {user: req.user, occupations, games})
     })
 }
