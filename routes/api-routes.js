@@ -99,7 +99,9 @@ app.get("/api/occupations", function(req,res){
   });
   app.get('/api/find', async (req, res) => {
       const users = await db.User.findAll({raw:true})
-      res.json(users.fi)
+      console.log('users:')
+      console.log(users.filter(user => user.user_id != req.user.id))
+      res.json(users.filter(user => user.user_id != req.user.id))
   })
 
  

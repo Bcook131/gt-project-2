@@ -40,44 +40,29 @@
     
         </div>
     </form>
-    <table id="fake" class="table-auto" style="display:none">
-        <thead>
-        <tr>
-            <th class="px-4 py-2">Title</th>
-            <th class="px-4 py-2">Author</th>
-            <th class="px-4 py-2">Has time</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td class="border px-4 py-2">Intro to CSS</td>
-            <td class="border px-4 py-2">Adam</td>
-            <td class="border px-4 py-2">today</td>
-        </tr>
-        <tr class="bg-gray-100">
-            <td class="border px-4 py-2">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
-            <td class="border px-4 py-2">Adam</td>
-            <td class="border px-4 py-2">tomorrow</td>
-        </tr>
-        <tr>
-            <td class="border px-4 py-2">Intro to JavaScript</td>
-            <td class="border px-4 py-2">Chris</td>
-            <td class="border px-4 py-2">weekend</td>
-        </tr>
-    </tbody>
+   
+<table id="user-data" class="table-auto w-2/3 mx-auto">
+
 </table>
-<div id="user-data"></div>
+
 <script>
     const $ = document.getElementById.bind(document);
     const occupationChoice = $('occupation-choice');
     const gameChoice = $('game-choice');
     const findForm = $('find-form');
     const resultContainer = $('user-data');
-    console.log(findForm)
+    
     findForm.addEventListener('submit', ev => {
-        alert('submit')
         ev.preventDefault();
-        resultContainer.innerHTML = '';
+        resultContainer.innerHTML = '
+        <thead>
+        <tr>
+            <th class="px-4 py-2">Occupation</th>
+            <th class="px-4 py-2">User</th>
+            <th class="px-4 py-2">Has time</th>
+        </tr>
+        </thead>
+        ';
         axios.get('/api/find').then(res => {
             res.data.forEach(user => {
                 resultContainer.innerHTML += template(user)
@@ -86,7 +71,12 @@
     })
 
     const template = data => `
-    <p>${data.firstName}</p>
+    <tr>
+        <td class="border px-4 py-2">Intro to JavaScript</td>
+        <td class="border px-4 py-2">${data.firstName} ${data.lastName} (${data.email})</td>
+        <td class="border px-4 py-2">weekend</td>
+    </tr>
+    
     `;
 
 </script>
