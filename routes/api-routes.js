@@ -3,7 +3,15 @@ var db = require("../models");
 var passport = require("../config/passport");
 const LocalStrategy = require('passport-local').Strategy;
 
-module.exports = function(app) {
+module.exports = function(app) {  
+  app.get("/api/games", function(req,res){
+    db.findAll();
+    console.log(db.findAll());
+  })
+//build more routes to get data in order to pass into the front end
+//get all data into array in order to be used for dropdowns on the frontend
+
+
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     console.log(req.body)
 
@@ -48,12 +56,13 @@ module.exports = function(app) {
 
   app.post("/api/signup", function(req, res) { 
     let info = req.body;
-    console.log(info)
+    console.log(info);
     db.User.create({
       firstName: info.firstName,
       lastName: info.lastName,
       email: info.email,
       password: info.password,
+      //expect occupation?
       OccupationId: info.OccupationId,
     }).then(function(request, response) {
 
