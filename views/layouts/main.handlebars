@@ -37,10 +37,10 @@
             </div>
         </div>
     </nav>
-    <div id="id01" class="modal pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center" style="display: none;">
+    <div id="id01" class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center" style="display: none;">
             <div class="overlay absolute w-full h-full bg-gray-900 ">
                 <div class="modal-body bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto relative">
-                <form class="modal-content py-4 text-left px-6" onsubmit="register">
+                <form class="modal-content py-4 text-left px-6" id="registerFrom">
                     <div class="container">
                         <h1>Sign Up</h1>
                         <p>Please fill in this form to create an account.</p>
@@ -77,7 +77,7 @@
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="reg-pwd" type="password" required>
                         </div>
-                        <div class="mb-4">
+                        {{!-- <div class="mb-4">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="reg-games">
                                 Favorite Games
                             </label>
@@ -86,7 +86,7 @@
                                 <option value="{{id}}">{{name}}</option>
                                 {{/each}}
                             </select>
-                        </div>
+                        </div> --}}
                        <div class="mb-4">
                             <label class="block text-gray-700 text-sm font-bold mb-2">
                                 Occupation
@@ -105,8 +105,9 @@
 
                         <div class="clearfix"></div>
                         <button type="button" onclick="toggleModal()"
-                            class="cancelbtn">Cancel</button>
-                        <button type="submit" class="signupbtn">Sign Up</button>
+                            class="inline-block text-sm px-4 py-2 text-red-500">Cancel</button>
+                        <button class="inline-block text-sm px-4 py-2 bg-teal-700 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" type="submit" style="width:auto;">
+                            Sign Up</button>
                     </div>
                 </form>
                 </div>
@@ -122,9 +123,27 @@
         function toggleModal(){
             modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
         }
+        var form = modal.querySelector('form');
+        form.addEventListener('submit', ev => {
+            ev.preventDefault();
+            register();
+        })
         function register(){
-            var form = modal.querySelector('form');
-            console.log(form.elements)
+            fetch('/api/signup',{
+                method: 'POST',
+                body: {
+                   firstName: form.elements.firstName.value,
+                   lastName:form.elements.lastName.value,
+                   email:form.elements.email.value,
+                   password: form.elements.password.value,
+                   occupation: form.elements.occupation.value
+                }
+            }).then(res => res.json())
+            .then(_=>{
+                window.location.href = '/'
+            })
+            
+            
         }
 
         window.onclick = function (event) {
