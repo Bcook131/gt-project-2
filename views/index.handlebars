@@ -22,12 +22,12 @@
             <div class="flex items-center justify-between">
                 <button
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit">
+                    id="signIn-button" type="submit">
                     Sign In
                 </button>
                 <button
                     class="bg-teal-300 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="button" onclick="toggleModal()">
+                    type="submit"id="signup-form">
                     Register
                 </button>
                 
@@ -42,7 +42,7 @@
         </p>
     </div>
     <script>
-        document.getElementById('login-form').addEventListener('submit', ev => {
+        document.getElementById("signIn-button").addEventListener('submit', ev => {
             ev.preventDefault();
             axios.post('/api/login',{
                 email: document.getElementById('username').value,
@@ -55,6 +55,22 @@
             })
             .catch(e => {
                 alert('Wrong credentials')
+            })
+            
+        })
+         document.getElementById('signup-form').addEventListener('submit', ev => {
+            ev.preventDefault();
+            axios.GET('/signup',{
+               
+                
+            }).then(res => {
+                console.log(res.data)
+                {
+                    window.location.href = '/signup';
+                }
+            })
+            .catch(e => {
+                
             })
             
         })
