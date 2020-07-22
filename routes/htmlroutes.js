@@ -14,15 +14,4 @@ module.exports = function(app){
 
         res.render('find', {user: req.user, occupations, games})
     })
-<<<<<<< HEAD
-    
-    
-    app.get('/signup', async function(req, res){
-        var occupations = await db.Occupation.findAll({raw:true});
-        var games = await db.Game.findAll({raw:true});
-        res.render('signup', {user: req.user, occupations, games})
-    })
 }
-=======
-}
->>>>>>> bf2b3471cdf20762ec2ad1f6a54586ab237c3758
