@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+​
 <head>
 	<head>
     <meta charset="UTF-8">
@@ -78,7 +78,7 @@
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="reg-pwd" type="password" required>
                         </div>
-                        {{!-- <div class="mb-4">
+                        <div class="mb-4">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="reg-games">
                                 Favorite Games
                             </label>
@@ -87,7 +87,7 @@
                                 <option value="{{id}}">{{name}}</option>
                                 {{/each}}
                             </select>
-                        </div> --}}
+                        </div>
                        <div class="mb-4">
                             <label class="block text-gray-700 text-sm font-bold mb-2">
                                 Occupation
@@ -98,12 +98,12 @@
                                 {{/each}}
                             </select>
                         </div>
-
+​
                        
-
+​
                         <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms &
                                 Privacy</a>.</p>
-
+​
                         <div class="clearfix"></div>
                         <button type="button" onclick="toggleModal()"
                             class="inline-block text-sm px-4 py-2 text-red-500">Cancel</button>
@@ -120,6 +120,7 @@
         
     <script>
         var modal = document.getElementById('id01');
+​
         function toggleModal(){
             modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
         }
@@ -129,23 +130,21 @@
             register();
         })
         function register(){
-            //
+            
             axios.post('/api/signup', {
                 firstName: form.elements['firstName'].value,
                 lastName:form.elements['lastName'].value,
                 email:form.elements['email'].value,
                 password: form.elements['password'].value,
                 occupation: form.elements['occupation'].value
-            }).then(res => {
-                //this then statement kind of in main using res to get response and that to use the id
-                
-                    window.location.href = '/find';
-                
+            }).then(_=>{
+                window.location.href = '/find'
             })
             
             
             
         }
+​
         window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -162,7 +161,8 @@
         }
         
     </style>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha512-VZ6m0F78+yo3sbu48gElK4irv2dzPoep8oo9LEjxviigcnnnNvnTOJRSrIhuFk68FMLOpiNz+T77nNY89rnWDg==" crossorigin="anonymous"></script>
-	<script src="./findfriends.js"></script>
-    </body>
+	</body>
 </html>
