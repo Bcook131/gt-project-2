@@ -1,6 +1,7 @@
 $(document).ready(function() {
+  //add paramater that takes in user id below. 
 function findFriends() {
-  let url = window.location.search;
+  let userid;
   let occupationid = $("#occupationid");
   let gameid = $("#gameid");
     User.findAll({
@@ -16,9 +17,9 @@ function findFriends() {
                     on g.game_id = ug.game_id
                     join occupations o
                     on u.occupationid = o.id
-                    where u.user_id not in(select user_id from users where u.user_id = 1)
-                    and occupationid = 1
-                    and ug.game_id = 1 ;
+                    where u.user_id not in(select user_id from users where u.user_id = ${userid})
+                    and occupationid = ${occupationid}
+                    and ug.game_id = ${gameid} ;
                 )`),
           "laughReactionsCount",
         ],

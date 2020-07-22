@@ -1,5 +1,4 @@
-
-    <div class="w-full max-w-xs mx-auto mt-8 relative" style="z-index: 1;">
+ <div class="w-full max-w-xs mx-auto mt-8 relative" style="z-index: 1;">
         <h2 class="text-xxl">Study & Game</h2>
         <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id="login-form">
             <div class="mb-4">
@@ -38,7 +37,7 @@
             
         </form>
         <p class="text-center text-gray-500 text-xs">
-            &copy;2020 Jimmy Diego Bian Andrew Corp. All rights reserved.
+            &copy;2020 Jimmy Diego Brian Andrew Corp. All rights reserved.
         </p>
     </div>
     <script>
@@ -48,7 +47,8 @@
                 email: document.getElementById('username').value,
                 password: document.getElementById('password').value,
             }).then(res => {
-                console.log(res.data)
+                //this then statement in main kind of res to get response and that to use the id
+                console.log("res.data",res.data.user_id)
                 if(res.data.user_id){
                     window.location.href = '/find';
                 }
